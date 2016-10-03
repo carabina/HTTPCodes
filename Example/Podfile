@@ -1,0 +1,6 @@
+use_frameworks!
+target 'HTTPCodes_Tests' do
+  pod 'HTTPCodes', :path => '../'
+  
+  
+end
