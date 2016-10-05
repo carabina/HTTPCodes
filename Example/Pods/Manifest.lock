@@ -1,0 +1,16 @@
+PODS:
+  - HTTPCodes (0.1.0)
+
+DEPENDENCIES:
+  - HTTPCodes (from `../`)
+
+EXTERNAL SOURCES:
+  HTTPCodes:
+    :path: ../
+
+SPEC CHECKSUMS:
+  HTTPCodes: 9c409fc299c82a5f98334f584ce6a0bab40705af
+
+PODFILE CHECKSUM: da4f854353bbc3e4abc49f9d24b8da8c758b2a60
+
+COCOAPODS: 1.1.0.rc.2
