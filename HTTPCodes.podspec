@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'HTTPCodes'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Enums for common HTTP codes.'
   s.description      = <<-DESC
                         Map your HTTP response codes to Swift enums.
