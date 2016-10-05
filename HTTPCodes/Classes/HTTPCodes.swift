@@ -8,7 +8,11 @@
 
 import Foundation
 
-enum Code {
+public protocol HTTPError: Error {
+    var code: Int { get }
+}
+
+public enum Code {
     case information(Int)
     case success(Success)
     case redirect(Int)
@@ -16,7 +20,7 @@ enum Code {
     case serverError(ServerError)
     case unknown(Int)
     
-    var code: Int {
+    public var code: Int {
         switch self {
         case .information(let code):
             return code
@@ -33,7 +37,7 @@ enum Code {
         }
     }
     
-    init(code: Int) {
+    public init(code: Int) {
         switch code {
         case 100..<200:
             self = .information(code)
@@ -51,7 +55,7 @@ enum Code {
     }
 }
 
-enum Success: Int {
+public enum Success: Int {
     case success = 200
     case created = 201
     case accepted = 202
@@ -65,7 +69,7 @@ enum Success: Int {
     case unknown = -1
 }
 
-enum ClientError: Int, Error {
+public enum ClientError: Int, HTTPError {
     case badRequest = 400
     case unauthorized = 401
     case paymentRequired = 402
@@ -95,9 +99,11 @@ enum ClientError: Int, Error {
     case requestHeaderFieldsTooLarge = 431
     case unavailableForLegalReasons = 451
     case unknown = -1
+    
+    public var code: Int { return rawValue }
 }
 
-enum ServerError: Int, Error {
+public enum ServerError: Int, HTTPError {
     case internalServerError = 500
     case notImplemented = 501
     case badGateway = 502
@@ -110,4 +116,6 @@ enum ServerError: Int, Error {
     case notExtended = 510
     case networkAuthenticationRequired = 511
     case unknown = -1
+    
+    public var code: Int { return rawValue }
 }
